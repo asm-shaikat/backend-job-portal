@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\JobApplicationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::post('/applications', [JobApplicationController::class, 'store']);
+Route::get('/applications', [JobApplicationController::class, 'index']);
+Route::get('/applications/{id}/download', [JobApplicationController::class, 'download']);
